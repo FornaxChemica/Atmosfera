@@ -3,12 +3,10 @@ import requests
 import os
 from dotenv import load_dotenv
 
-# Load environment variables from .env file
 load_dotenv()
 
 DISCORD_TOKEN = os.getenv('DISCORD_TOKEN')
 
-# Define the intents
 intents = discord.Intents.default()
 intents.message_content = True
 
