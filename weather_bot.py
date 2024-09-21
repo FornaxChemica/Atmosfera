@@ -15,8 +15,6 @@ intents.message_content = True
 client = discord.Client(intents=intents)
 
 def get_weather(city):
-    # Example endpoint: "https://api.open-meteo.com/v1/forecast?latitude=35&longitude=139&hourly=temperature_2m"
-    # You need to get latitude and longitude for the city. You can use a geocoding service for this.
     geocode_url = f"https://nominatim.openstreetmap.org/search?city={city}&format=json"
     response = requests.get(geocode_url)
     if response.status_code == 200 and len(response.json()) > 0:
@@ -48,7 +46,7 @@ async def on_message(message):
         weather = get_weather(city)
         if weather:
             temp, windspeed, weathercode = weather
-            description = f"Weather code: {weathercode}"  # Replace with a proper description based on the weather code
+            description = f"Weather code: {weathercode}" 
             embed = discord.Embed(
                 title=f"Weather in {city}",
                 description=description,
